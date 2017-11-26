@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from rest_framework import viewsets
+from serializers import UserSerializer
+from models import SantaUser
 
-from django.shortcuts import render
 
-# Create your views here.
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = SantaUser.objects.all()
+    serializer_class = UserSerializer
