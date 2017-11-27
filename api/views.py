@@ -48,6 +48,7 @@ class SessionViewSet(viewsets.ModelViewSet):
     serializer_class = SessionSerializer
 
     def create(self, request, *args, **kwargs):
+        print ('Creating session')
         data = request.data
 
         user = SantaUser.objects.get(pk=data['author'])
@@ -61,3 +62,18 @@ class SessionViewSet(viewsets.ModelViewSet):
         serializer = SessionSerializer(session)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def update(self, request, *args, **kwargs):
+        print ('Updating session')
+        data = request.data
+
+        newUser = SantaUser.objects.get(pk=data['new_user'])
+        session = Session.objects.get(pk=kwargs['pk'])
+
+        session.users.add(newUser)
+        session.save()
+
+        serializer = SessionSerializer(session)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
+
