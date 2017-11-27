@@ -8,6 +8,7 @@ from serializers import UserSerializer, SessionSerializer
 from models import SantaUser, Session
 from django.contrib.auth.models import User
 from django.db import transaction
+import random, string
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -45,3 +46,18 @@ class UserViewSet(viewsets.ModelViewSet):
 class SessionViewSet(viewsets.ModelViewSet):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
+
+    def create(self, request, *args, **kwargs):
+        data = request.data
+
+        user = SantaUser.objects.get(pk=data['author'])
+
+        key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
+        session = Session(author=user.id, key=key)
+        session.save()
+        session.users.add(user)
+        session.save()
+
+        serializer = SessionSerializer(session)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
