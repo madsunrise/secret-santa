@@ -13,6 +13,7 @@ class SantaUser(models.Model):
 
 
 class Session(models.Model):
+    author = models.IntegerField()  # author id
     users = models.ManyToManyField(SantaUser)
     date = models.DateTimeField(default=datetime.datetime.now)
     key = models.CharField(max_length=6)
