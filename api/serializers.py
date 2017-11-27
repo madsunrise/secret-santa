@@ -1,9 +1,16 @@
 from rest_framework import serializers
-from models import SantaUser
+from models import SantaUser, Session
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = SantaUser
-        fields = ('username', 'email', 'wish')
+        fields = '__all__'
+        depth = 1
 
+
+class SessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Session
+        fields = '__all__'
+        depth = 2
