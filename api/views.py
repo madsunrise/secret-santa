@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 
 from serializers import UserSerializer, SessionSerializer
 from models import SantaUser, Session
@@ -9,7 +10,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 
 
-class UsersList(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     queryset = SantaUser.objects.all()
     serializer_class = UserSerializer
 
@@ -32,10 +33,15 @@ class UsersList(viewsets.ModelViewSet):
 
         serializer = UserSerializer(santaUser)
         headers = self.get_success_headers(serializer.data)
-
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
+    def retrieve(self, request, *args, **kwargs):
+        queryset = SantaUser.objects.all()
+        user = get_object_or_404(queryset, pk=kwargs['pk'])
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
-class SessionsList(viewsets.ModelViewSet):
+
+class SessionViewSet(viewsets.ModelViewSet):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
