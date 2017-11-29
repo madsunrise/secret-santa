@@ -12,7 +12,7 @@ import random, string
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = SantaUser.objects.all()
+    queryset = SantaUser.objects.none()
     serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
@@ -20,9 +20,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
         with transaction.atomic():
             user = User(
-                username=data['username'],
+                username=randomString(6),
+                first_name=data['name'],
                 email=data['email'],
-                password=data['password']
             )
             user.clean()
             user.save()
@@ -37,15 +37,19 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def retrieve(self, request, *args, **kwargs):
-        queryset = SantaUser.objects.all()
-        user = get_object_or_404(queryset, pk=kwargs['pk'])
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+        # queryset = SantaUser.objects.all()
+        # user = get_object_or_404(queryset, pk=kwargs['pk'])
+        # serializer = UserSerializer(user)
+        # return Response(serializer.data)
+        return Response(status=status.HTTP_403_FORBIDDEN)
 
 
 class SessionViewSet(viewsets.ModelViewSet):
-    queryset = Session.objects.all()
+    queryset = Session.objects.none()
     serializer_class = SessionSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_403_FORBIDDEN)
 
     def create(self, request, *args, **kwargs):
         print ('Creating session')
@@ -53,7 +57,7 @@ class SessionViewSet(viewsets.ModelViewSet):
 
         user = SantaUser.objects.get(pk=data['author'])
 
-        key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
+        key = randomId(4)
         session = Session(author=user.id, key=key)
         session.save()
         session.users.add(user)
@@ -76,4 +80,11 @@ class SessionViewSet(viewsets.ModelViewSet):
         serializer = SessionSerializer(session)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
+
+
+def randomString(length):
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(length))
+
+def randomId(length):
+    return ''.join(random.choice(string.digits) for _ in range(length))
 
