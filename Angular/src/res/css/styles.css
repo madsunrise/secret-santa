@@ -1,0 +1,405 @@
+@font-face {
+    font-family: RobotoRegular; /* Гарнитура шрифта */
+    src: url(../fonts/RobotoTTF/Roboto-Regular.ttf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: RobotoBold; /* Гарнитура шрифта */
+    src: url(../fonts/RobotoTTF/Roboto-Bold.ttf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: RobotoLight; /* Гарнитура шрифта */
+    src: url(../fonts/RobotoTTF/Roboto-Light.ttf); /* Путь к файлу со шрифтом */
+}
+
+html {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin-left: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: RobotoRegular;
+}
+
+header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e2a3c;
+    color: white;
+}
+
+header h1 {
+    padding: 5px 15px;
+    font-size: 18px;
+}
+
+header h1 strong {
+    font-family: RobotoBold, sans-serif;
+}
+
+header a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(to bottom, #2fa0fa 0%, #237dec 100%);
+}
+
+body {
+    margin-top: 30px;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+main-component {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    color: #6c6c6c;
+    width:100%;
+    font-family: RobotoLight, sans-serif;
+}
+
+.column-header {
+    padding: 5px 15px;
+    font-size: 24px;
+    color: #1984c9;
+}
+
+/*.container {*/
+    /*padding: 10px 15px;*/
+/*}*/
+
+.left-container {
+    flex: 1;
+    min-width: 420px;
+    border-right: 1px solid lightgray;
+    background: rgba(128, 128, 128, 0.06);
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+gibdd-queries, post-responses {
+    /*background: red;*/
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.right-container {
+    flex: 1.5;
+    overflow: hidden;
+}
+
+.footer-bar {
+    margin-top: auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-top: 1px solid lightgray;
+    background: white;
+}
+
+
+
+.header-wrapping {
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+    background: white;
+}
+/*.header-wrapping__header {
+    padding-left: 15px;
+    font-size: 175%;
+    margin-bottom: 0;
+}*/
+
+/*.left-content {*/
+    /*padding-right: 50px;*/
+/*}*/
+
+.request-manual {
+    color: #9c9c9c;
+    font-size: 125%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+/*.request-manual__first-line {
+    margin-bottom: 5px;
+}*/
+
+.request-manual__second-line {
+    margin: 0;
+}
+
+
+.drop-zone {
+    width: 70%;
+    padding: 20px;
+    margin: 25px auto;
+    border: 2px dashed lightgray;
+    background: white;
+}
+
+.drop-zone__move {
+    color: lightgray;
+    font-size: 250%;
+}
+
+.drop-zone__or {
+    color: lightgray;
+    font-size: 150%;
+    margin: 20px 0 30px 0;
+}
+
+
+.choose_button {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    background: #ff9800;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.choose_button__text {
+    color: white;
+    font-family: RobotoNormal, sans-serif;
+    font-size: 110%
+}
+
+.choose_button__input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+
+.input-files-table {
+    width: 95%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.input-files-table__head {
+    /*color: #ff9800;*/
+    font-size: 90%;
+    text-align: left;
+    border-bottom: 1px lightgray solid;
+}
+
+.table-row {
+    /*font-size: 125%;*/
+    padding-bottom: 10px;
+}
+
+.table-row__remove-item {
+    float: right;
+    cursor: pointer
+}
+
+.material-button {
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    font-family: RobotoRegular, sans-serif !important;
+    background: #2199e8 !important;
+}
+
+.material-button:enabled {
+    color: white !important;
+}
+
+.mat-button[disabled] {
+    color: white !important;
+    opacity: 0.3;
+}
+
+
+
+.material-button__right {
+    float: right;
+}
+
+
+/*.process-requests {
+    font-size: 175%;
+    margin-bottom: 10px;
+    margin-left: 30px
+}*/
+
+.tabs-completer {
+    float: left;
+    height: 48px;
+    width: 30px;
+    border-bottom: 1px lightgray solid;
+}
+
+.in-work-page {
+    font-family: RobotoLight, sans-serif;
+    height: auto;
+}
+
+.info-block {
+    margin-top: 15px;
+}
+
+.info-header {
+    display: inline;
+}
+
+
+.item-counter {
+    margin-left: 5px;
+    font-size: 110%;
+    font-weight: bold;
+    color: #2199e8;
+}
+
+/*.update-button-bar {
+    margin-top: 40px;
+    padding-top: 10px;
+    width: 100%;
+    border-top: 1px lightgray solid;
+    text-align:center;
+}*/
+
+.done-files-table {
+    width: 450px;
+    margin-top: 8px;
+}
+
+.right-container td {
+    font-size: 115%;;
+    padding-bottom: 8px;
+}
+
+.done-files-table__item-date {
+    font-family: RobotoBold, sans-serif;
+}
+
+.done-files-table td > * {
+    vertical-align : middle;
+}
+
+.link-action {
+    font-family: RobotoRegular, sans-serif;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #2199e8;
+}
+
+.link-action_gray{
+    color: #adadad;
+}
+
+.info {
+    font-size: 115%;
+}
+
+.info-wait-for-send {
+    margin-top: 5px;
+    font-family: RobotoBold, sans-serif;
+}
+
+.archive-page {
+    font-family: RobotoLight, sans-serif;
+    margin-top: 25px;
+    height: auto;
+}
+
+.archive-table {
+    margin-top: 20px;
+    width: 450px;
+}
+
+.archive-table__item-date {
+    font-family: RobotoBold, sans-serif;
+}
+
+.archive-table td > * {
+    vertical-align : middle;
+}
+
+.period-selector {
+    display: inline-block;
+    vertical-align: top;
+    margin: 7px 30px 0 0;
+}
+
+.dates-block {
+    display: inline-block;
+}
+
+.first-date {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.second-date {
+    display: inline-block;
+}
+
+.mat-tab-body-content {
+    height: auto !important;
+}
+
+post-responses .mat-tab-body-wrapper {
+  overflow: initial !important;
+}
+
+post-responses .mat-tab-body {
+  overflow: initial !important;
+}
+
+
+/*Helper Styles*/
+.helper-flex-center {
+    justify-content: center;
+}
+
+.helper-flex-between {
+    justify-content: space-between;
+}
+
+.material-dialog {
+    word-wrap: break-word;
+    margin: 20px 0 20px 0;
+}
+
+
+
+
+
+
