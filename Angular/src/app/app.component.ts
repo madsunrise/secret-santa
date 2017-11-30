@@ -26,7 +26,7 @@ import {NetworkService} from "./UserService";
 
             <div class="form-group">
                 <label for="wish">Пожелание</label>
-                <input type="text" class="form-control" id="wish" [(ngModel)]="wish" placeholder="Ну давай, жги">
+                <input type="text" class="form-control" style="height: 75px" id="wish" [(ngModel)]="wish" placeholder="Ну давай, жги">
             </div>
 
             <div class="form-group">
