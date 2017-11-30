@@ -12,13 +12,13 @@ import {NetworkService} from "./UserService";
         <body>
         <div style="width: 400px; margin-left: 100px;">
             <div class="form-group">
-                <label for="name">Твоя имя</label>
-                <input type="text" class="form-control" id="name" placeholder="Представишься?" [(ngModel)]="name">
+                <label for="name">Имя</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="name">
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Только без ошибок!"
+                <input type="email" class="form-control" id="email" 
                        [(ngModel)]="email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. It's a
                     lie.
@@ -27,18 +27,46 @@ import {NetworkService} from "./UserService";
 
             <div class="form-group">
                 <label for="wish">Пожелание</label>
-                <input type="text" class="form-control" id="wish" [(ngModel)]="wish" placeholder="Ну давай, жги">
+                <input type="text" class="form-control" id="wish" [(ngModel)]="wish" >
             </div>
 
             <div class="form-group">
                 <label for="room">Идентификатор комнаты</label>
-                <input type="text" class="form-control" id="room" placeholder="Не ошибись!" [(ngModel)]="room">
+                <input type="text" class="form-control" id="room"[(ngModel)]="room">
             </div>
 
 
             <div class="col-md-8">
                 <button class="btn btn-default" (click)="submit(name, email, wish, room)">Погнали!</button>
             </div>
+            <!--<div class="form-group">-->
+                <!--<label for="name">Твоя имя</label>-->
+                <!--<input type="text" class="form-control" id="name" placeholder="Представишься?" [(ngModel)]="name">-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label for="email">Email</label>-->
+                <!--<input type="email" class="form-control" id="email" placeholder="Только без ошибок!"-->
+                       <!--[(ngModel)]="email">-->
+                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. It's a-->
+                    <!--lie.-->
+                <!--</small>-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label for="wish">Пожелание</label>-->
+                <!--<input type="text" class="form-control" id="wish" [(ngModel)]="wish" placeholder="Ну давай, жги">-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label for="room">Идентификатор комнаты</label>-->
+                <!--<input type="text" class="form-control" id="room" placeholder="Не ошибись!" [(ngModel)]="room">-->
+            <!--</div>-->
+
+
+            <!--<div class="col-md-8">-->
+                <!--<button class="btn btn-default" (click)="submit(name, email, wish, room)">Погнали!</button>-->
+            <!--</div>-->
         </div>
         </body>`,
     providers: [NetworkService]

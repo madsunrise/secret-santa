@@ -94,7 +94,7 @@ def randomId(length):
 def sendConfirmationEmail(email):
     send_mail(
         'Тайный Санта',
-        'Ура! Ты был зарегистрирован в Тайном Санте 2018! Держи случайный анекдот: \n' + randomJoke() + '\n\nС уважением, ваш Санта',
+        'Ура! Ты был зарегистрирован в Тайном Санте 2018!', #Держи случайный анекдот: \n' + randomJoke() + '\n\nС уважением, ваш Санта',
         '2017.secret.santa.2018@gmail.com',
         [email],
         fail_silently=False,
