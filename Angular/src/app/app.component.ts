@@ -26,7 +26,7 @@ import {NetworkService} from "./UserService";
 
             <div class="form-group">
                 <label for="wish">Пожелание</label>
-                <textarea class="form-control" id="wish" [(ngModel)]="wish" placeholder="Ну давай, жги">
+                <textarea class="form-control" id="wish" [(ngModel)]="wish" placeholder="Ну давай, жги"></textarea>
             </div>
 
             <div class="form-group">
