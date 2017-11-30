@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 
-const SERVER_URL = 'http://127.0.0.1:8000/';
+const SERVER_URL = 'http://127.0.0.1:8081/';
 
 @Injectable()
 export class NetworkService {
