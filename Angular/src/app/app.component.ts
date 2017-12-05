@@ -36,7 +36,22 @@ import {NetworkService} from "./UserService";
 
 
             <div class="form-group">
-                <button class="btn btn-default" [disabled]="buttonDisabled" (click)="submit(name, email, wish, room)">Погнали!</button>
+                <button class="btn btn-default" [disabled]="buttonDisabled" (click)="submit(name, email, wish, room)">
+                    Готово!
+                </button>
+            </div>
+        </div>
+
+        <div style="margin-top: 100px">Разыграть нужную комнату можно ниже</div>
+        <div style="width: 400px; margin-left: 100px;">
+            <div class="form-group">
+                <label for="play_session_id">Идентификатор комнаты</label>
+                <input type="text" class="form-control" id="play_session_id" [(ngModel)]="session_id">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" [disabled]="playButtonDisabled" (click)="play(session_id)">Понеслась!
+                </button>
             </div>
         </div>
         </body>`,
@@ -47,6 +62,8 @@ export class AppComponent {
     }
 
     buttonDisabled = false;
+    playButtonDisabled = false;
+    maginNumber = 4264;
 
     submit(name: string, email: string, wish: string, room: string): void {
 
@@ -58,7 +75,7 @@ export class AppComponent {
         this.buttonDisabled = true;
 
         let roomInt = Number.parseInt(room);
-        roomInt = roomInt - 4264;
+        roomInt = roomInt - this.maginNumber;
 
         let body = {name: name, email: email, wish: wish};
 
@@ -69,5 +86,22 @@ export class AppComponent {
                 )
             }
         );
+    }
+
+
+    play(session_id: string): void {
+        if (session_id) {
+            alert("Заполни все поля, братюнь!");
+            return;
+        }
+
+        this.playButtonDisabled = true;
+
+        let roomInt = Number.parseInt(session_id);
+        roomInt = roomInt - this.maginNumber;
+
+        this.userService.playSession(roomInt).subscribe(
+            data => alert("Письма разосланы!")
+        )
     }
 }

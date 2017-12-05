@@ -19,4 +19,9 @@ export class NetworkService {
         return this.http.put(SERVER_URL + 'sessions/' + sessionId + '/', {new_user: userId})
             .map((res: Response) => res.json())
     }
+
+    playSession(sessionId: Number) {
+        return this.http.get(SERVER_URL + 'sessions/' + sessionId + '/')
+            .map((res: Response) => res.json())
+    }
 }
