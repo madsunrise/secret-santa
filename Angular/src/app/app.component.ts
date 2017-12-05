@@ -42,7 +42,7 @@ import {NetworkService} from "./UserService";
             </div>
         </div>
 
-        <div style="margin-left: 100px; margin-top: 50px; margin-bottom: 25px;">Разыграть нужную комнату можно ниже</div>
+        <div style="margin-left: 100px; margin-top: 50px; margin-bottom: 15px;">Разыграть нужную комнату можно ниже</div>
         <div style="width: 400px; margin-left: 100px;">
             <div class="form-group">
                 <label for="session_id">Идентификатор комнаты</label>
