@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.core.mail import send_mail
 
 from serializers import UserSerializer, SessionSerializer
@@ -52,7 +53,7 @@ class SessionViewSet(viewsets.ModelViewSet):
     serializer_class = SessionSerializer
 
     def retrieve(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return play(kwargs['pk'])
 
     def create(self, request, *args, **kwargs):
         print ('Creating session')
@@ -104,13 +105,35 @@ def sendConfirmationEmail(email):
     )
 
 
+def play(session_id):
+    session = Session.objects.get(pk=session_id)
+    if session.alreadyPlayed == 1:
+        return Response(status=status.HTTP_409_CONFLICT)
 
-def playSanta(session):
-    users = SantaUser.objects.filter(session=session)
+    users = [user.user for user in session.users.all()]
+    random.shuffle(users)
+
+    for i, sender in enumerate(users):
+        receiver = users[(i + 1) % len(users)]
+        print (u"From %s to %s" % (sender.email, receiver.email))
+        sendPlayEmail(sender.email, receiver.first_name)
+
+    session.alreadyPlayed = 1
+    session.save()
+    return Response(status=status.HTTP_200_OK)
 
 
+def sendPlayEmail(fromMe, toHim):
+    text = 'Хей!\n\nМы определили твою судьбу, ' \
+           'адресат твоего подарочка: %s. Да смотри не облажайся!\n\nС уважением, гномики.' % toHim
 
-
+    send_mail(
+        'Тайный Санта',
+        text,
+        '2017.secret.santa.2018@gmail.com',
+        [fromMe],
+        fail_silently=False,
+    )
 
 
 def randomJoke():
