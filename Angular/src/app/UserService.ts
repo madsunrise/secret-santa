@@ -22,6 +22,5 @@ export class NetworkService {
 
     playSession(sessionId: Number) {
         return this.http.get(SERVER_URL + 'sessions/' + sessionId + '/')
-            .map((res: Response) => res.json())
     }
 }
