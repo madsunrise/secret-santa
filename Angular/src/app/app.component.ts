@@ -36,7 +36,7 @@ import {NetworkService} from "./UserService";
 
 
             <div class="form-group">
-                <button class="btn btn-default" (click)="submit(name, email, wish, room)">Погнали!</button>
+                <button class="btn btn-default" [disabled]="buttonDisabled" (click)="submit(name, email, wish, room)">Погнали!</button>
             </div>
         </div>
         </body>`,
@@ -46,6 +46,7 @@ export class AppComponent {
     constructor(private userService: NetworkService) {
     }
 
+    buttonDisabled = false;
 
     submit(name: string, email: string, wish: string, room: string): void {
 
@@ -53,6 +54,8 @@ export class AppComponent {
             alert("Заполни все поля, братюнь!");
             return;
         }
+
+        this.buttonDisabled = true;
 
         let roomInt = Number.parseInt(room);
         roomInt = roomInt - 4264;

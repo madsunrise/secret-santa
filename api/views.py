@@ -104,6 +104,15 @@ def sendConfirmationEmail(email):
     )
 
 
+
+def playSanta(session):
+    users = SantaUser.objects.filter(session=session)
+
+
+
+
+
+
 def randomJoke():
     jokes = [
         '''Разговор двух блондинок.
