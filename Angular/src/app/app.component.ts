@@ -42,11 +42,11 @@ import {NetworkService} from "./UserService";
             </div>
         </div>
 
-        <div style="margin-top: 100px">Разыграть нужную комнату можно ниже</div>
+        <div style="margin-left: 100px; margin-top: 75px">Разыграть нужную комнату можно ниже</div>
         <div style="width: 400px; margin-left: 100px;">
             <div class="form-group">
-                <label for="play_session_id">Идентификатор комнаты</label>
-                <input type="text" class="form-control" id="play_session_id" [(ngModel)]="session_id">
+                <label for="session_id">Идентификатор комнаты</label>
+                <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
             </div>
 
             <div class="form-group">
@@ -90,7 +90,7 @@ export class AppComponent {
 
 
     play(session_id: string): void {
-        if (session_id) {
+        if (session_id == null) {
             alert("Заполни все поля, братюнь!");
             return;
         }
