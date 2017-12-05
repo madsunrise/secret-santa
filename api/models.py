@@ -17,3 +17,4 @@ class Session(models.Model):
     users = models.ManyToManyField(SantaUser)
     date = models.DateTimeField(default=datetime.datetime.now)
     key = models.CharField(max_length=6)
+    alreadyPlayed = models.IntegerField(default=0)
