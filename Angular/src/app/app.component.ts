@@ -82,7 +82,7 @@ export class AppComponent {
         this.userService.registerNewUser(body).subscribe(
             data => {
                 this.userService.addUserToSession(roomInt, data.id).subscribe(
-                    data => alert("Хей, жди письмо с подтверждением!")
+                    data => alert("Йоу, жди письмо с подтверждением!")
                 )
             }
         );
