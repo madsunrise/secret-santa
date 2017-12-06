@@ -110,22 +110,23 @@ def play(session_id):
     if session.alreadyPlayed == 1:
         return Response(status=status.HTTP_409_CONFLICT)
 
-    users = [user.user for user in session.users.all()]
+    users = [user for user in session.users.all()]
+    random.shuffle(users)
     random.shuffle(users)
 
     for i, sender in enumerate(users):
         receiver = users[(i + 1) % len(users)]
-        print (u"From %s to %s" % (sender.email, receiver.email))
-        sendPlayEmail(sender.email, receiver.first_name)
+        print (u"From %s to %s with wish: %s" % (sender.user.email, receiver.user.email, receiver.wish))
+        sendPlayEmail(sender.user.email, receiver.user.first_name, receiver.wish)
 
     session.alreadyPlayed = 1
     session.save()
     return Response(status=status.HTTP_200_OK)
 
 
-def sendPlayEmail(fromMe, toHim):
+def sendPlayEmail(fromMe, toHim, wish):
     text = 'Хей!\n\nМы определили твою судьбу, ' \
-           'адресат твоего подарочка: %s. Да смотри не облажайся!\n\nС уважением, гномики.' % toHim
+           'адресат твоего подарочка: %s. Да смотри не облажайся! Он хочет: %s\n\nС уважением, гномики.' % (toHim, wish)
 
     send_mail(
         'Тайный Санта',
