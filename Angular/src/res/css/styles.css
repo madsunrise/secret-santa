@@ -13,16 +13,15 @@
     src: url(../fonts/RobotoTTF/Roboto-Light.ttf); /* Путь к файлу со шрифтом */
 }
 
-html {
-    box-sizing: border-box;
-    overflow: hidden;
-}
 
 *, *:before, *:after {
     box-sizing: inherit;
 }
 
+html { overflow-y: scroll; }
+
 body {
+    position: absolute;
     margin-left: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
