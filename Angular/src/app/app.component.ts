@@ -14,7 +14,7 @@ import {NetworkService} from "./UserService";
             </div>
         </nav>
 
-        <mat-progress-bar *ngIf="aaaa == true" mode="indeterminate"></mat-progress-bar>
+        <mat-progress-bar *ngIf="progressBarEnabled == true" mode="indeterminate"></mat-progress-bar>
 
         <div style="width: 350px; margin-top: 15px; margin-left: 40px;">
             <div class="form-group">
@@ -70,10 +70,9 @@ export class AppComponent {
     constructor(private userService: NetworkService) {
     }
 
-    aaaa = false;
     buttonDisabled = false;
     playButtonDisabled = false;
-    progressBarDisabled = true;
+    progressBarEnabled = false;
     maginNumber = 4264;
 
     submit(name: string, email: string, wish: string, room: string): void {
@@ -83,7 +82,7 @@ export class AppComponent {
             return;
         }
 
-        this.progressBarDisabled = false;
+        this.progressBarEnabled = true;
         this.buttonDisabled = true;
 
         let roomInt = Number.parseInt(room);
@@ -97,7 +96,7 @@ export class AppComponent {
                     .subscribe(
                         data => {
                             alert("Йоу, жди письмо с подтверждением!");
-                            this.progressBarDisabled = true;
+                            this.progressBarEnabled = false;
                         }
                     )
             }
@@ -111,7 +110,7 @@ export class AppComponent {
             return;
         }
 
-        this.progressBarDisabled = false;
+        this.progressBarEnabled = true;
         this.playButtonDisabled = true;
 
         let roomInt = Number.parseInt(session_id);
@@ -120,7 +119,7 @@ export class AppComponent {
         this.userService.playSession(roomInt).subscribe(
             data => {
                 alert("Письма разосланы!");
-                this.progressBarDisabled = true;
+                this.progressBarEnabled = false;
             }
         )
     }
