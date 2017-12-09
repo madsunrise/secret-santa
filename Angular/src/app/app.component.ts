@@ -16,7 +16,7 @@ import {NetworkService} from "./UserService";
 
         <mat-progress-bar [hidden]="progressBarDisabled" mode="indeterminate"></mat-progress-bar>
 
-        <div style="width: 350px; margin-left: 40px;">
+        <div style="width: 350px; margin-top: 15px; margin-left: 40px;">
             <div class="form-group">
                 <label for="name">Имя</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="name">
