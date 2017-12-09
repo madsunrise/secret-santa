@@ -6,7 +6,6 @@ import {NetworkService} from "./UserService";
     selector: 'secret-santa',
     template: `
         <body>
-
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -14,6 +13,8 @@ import {NetworkService} from "./UserService";
                 </div>
             </div>
         </nav>
+
+        <mat-progress-bar *ngIf="progressBarEnabled == true" mode="indeterminate"></mat-progress-bar>
 
         <div style="width: 350px; margin-left: 40px;">
             <div class="form-group">
@@ -47,12 +48,12 @@ import {NetworkService} from "./UserService";
             </div>
 
 
-            <div style="margin-top: 50px; margin-bottom: 15px;">Разыграть нужную комнату можно ниже</div>
+            <div style="margin-top: 65px; margin-bottom: 15px;">Если все готовы, то ниже ты можешь разыграть Тайного Санту!</div>
 
             <div class="form-group">
                 <label for="session_id">Идентификатор комнаты</label>
                 <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
-                <small id="emailHelp" class="form-text text-muted">Подумай 10 раз прежде чем нажать кнопку!</small>
+                <small id="emailHelp" class="form-text text-muted">Подумай 10 раз прежде чем нажимать на кнопку</small>
             </div>
 
             <div class="form-group">
@@ -70,6 +71,7 @@ export class AppComponent {
 
     buttonDisabled = false;
     playButtonDisabled = false;
+    progressBarEnabled = false;
     maginNumber = 4264;
 
     submit(name: string, email: string, wish: string, room: string): void {
@@ -79,6 +81,7 @@ export class AppComponent {
             return;
         }
 
+        this.progressBarEnabled = true;
         this.buttonDisabled = true;
 
         let roomInt = Number.parseInt(room);
@@ -88,9 +91,13 @@ export class AppComponent {
 
         this.userService.registerNewUser(body).subscribe(
             data => {
-                this.userService.addUserToSession(roomInt, data.id).subscribe(
-                    data => alert("Йоу, жди письмо с подтверждением!")
-                )
+                this.userService.addUserToSession(roomInt, data.id)
+                    .subscribe(
+                        data => {
+                            alert("Йоу, жди письмо с подтверждением!");
+                            this.progressBarEnabled = false;
+                        }
+                    )
             }
         );
     }
@@ -102,13 +109,17 @@ export class AppComponent {
             return;
         }
 
+        this.progressBarEnabled = true;
         this.playButtonDisabled = true;
 
         let roomInt = Number.parseInt(session_id);
         roomInt = roomInt - this.maginNumber;
 
         this.userService.playSession(roomInt).subscribe(
-            data => alert("Письма разосланы!")
+            data => {
+                alert("Письма разосланы!");
+                this.progressBarEnabled = false;
+            }
         )
     }
 }
