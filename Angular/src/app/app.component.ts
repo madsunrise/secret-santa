@@ -4,13 +4,12 @@ import {NetworkService} from "./UserService";
 
 @Component({
     selector: 'secret-santa',
-    template: `
-        <header>
-        <h1> Тайный Санта 2018</h1>
-        </header>
-
+    template: `        
         <body>
-        <div style="width: 350px; margin-left: 10px;">
+        
+        <img src="https://onepagelove-wpengine.netdna-ssl.com/wp-content/uploads/gravity_forms/1-e6fef9602ee538adb7069defe12f9dc0/2012/12/Secret-Santa-400-211.jpg"/>
+        
+        <div style="width: 350px; margin-left: 50px;">
             <div class="form-group">
                 <label for="name">Имя</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="name">
@@ -44,17 +43,16 @@ import {NetworkService} from "./UserService";
 
 
             <div style="margin-top: 50px; margin-bottom: 15px;">Разыграть нужную комнату можно ниже</div>
-            <div style="width: 400px; margin-left: 100px;">
-                <div class="form-group">
-                    <label for="session_id">Идентификатор комнаты</label>
-                    <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
-                </div>
 
-                <div class="form-group">
-                    <button class="btn btn-default" [disabled]="playButtonDisabled" (click)="play(session_id)">
-                        Понеслась!
-                    </button>
-                </div>
+            <div class="form-group">
+                <label for="session_id">Идентификатор комнаты</label>
+                <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" [disabled]="playButtonDisabled" (click)="play(session_id)">
+                    Понеслась!
+                </button>
             </div>
         </div>
         </body>`,

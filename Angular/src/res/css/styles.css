@@ -31,7 +31,6 @@ body {
 
 header {
     height: 50px;
-    display: flex;
     background: #1e2a3c;
     color: white;
 }
