@@ -10,7 +10,9 @@ import {NetworkService} from "./UserService";
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                   <h1>Тайный Санта 2018</h1>
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" src="https://www.ialottery.com/images/Promotions/SecretSanta/SecretSantaLogo_300px.png">
+                    </a>
                 </div>
             </div>
         </nav>
