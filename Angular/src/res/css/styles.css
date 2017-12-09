@@ -31,7 +31,9 @@ body {
 
 .navbar-default {
     background: #1e2a3c;
-    border-color: #000000;
+}
+
+.navbar-brand {
     color: white;
 }
 
