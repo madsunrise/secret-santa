@@ -6,7 +6,6 @@ import {NetworkService} from "./UserService";
     selector: 'secret-santa',
     template: `
         <body>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -14,6 +13,8 @@ import {NetworkService} from "./UserService";
                 </div>
             </div>
         </nav>
+
+        <mat-progress-bar [hidden]="progressBarDisabled" mode="indeterminate"></mat-progress-bar>
 
         <div style="width: 350px; margin-left: 40px;">
             <div class="form-group">
@@ -25,7 +26,8 @@ import {NetworkService} from "./UserService";
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email"
                        [(ngModel)]="email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. But it's not a truth.
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. But
+                    it's not a truth.
                 </small>
             </div>
 
@@ -70,6 +72,7 @@ export class AppComponent {
 
     buttonDisabled = false;
     playButtonDisabled = false;
+    progressBarDisabled = true;
     maginNumber = 4264;
 
     submit(name: string, email: string, wish: string, room: string): void {
@@ -79,6 +82,7 @@ export class AppComponent {
             return;
         }
 
+        this.progressBarDisabled = false;
         this.buttonDisabled = true;
 
         let roomInt = Number.parseInt(room);
@@ -88,9 +92,13 @@ export class AppComponent {
 
         this.userService.registerNewUser(body).subscribe(
             data => {
-                this.userService.addUserToSession(roomInt, data.id).subscribe(
-                    data => alert("Йоу, жди письмо с подтверждением!")
-                )
+                this.userService.addUserToSession(roomInt, data.id)
+                    .subscribe(
+                        data => {
+                            alert("Йоу, жди письмо с подтверждением!");
+                            this.progressBarDisabled = true;
+                        }
+                    )
             }
         );
     }
@@ -102,13 +110,17 @@ export class AppComponent {
             return;
         }
 
+        this.progressBarDisabled = false;
         this.playButtonDisabled = true;
 
         let roomInt = Number.parseInt(session_id);
         roomInt = roomInt - this.maginNumber;
 
         this.userService.playSession(roomInt).subscribe(
-            data => alert("Письма разосланы!")
+            data => {
+                alert("Письма разосланы!");
+                this.progressBarDisabled = true;
+            }
         )
     }
 }
