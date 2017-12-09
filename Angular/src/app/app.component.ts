@@ -48,7 +48,7 @@ import {NetworkService} from "./UserService";
             </div>
 
 
-            <div style="margin-top: 40px; margin-bottom: 15px;">Если все готовы, то ниже ты можешь разыграть Тайного Санту!</div>
+            <div style="margin-top: 65px; margin-bottom: 15px;">Если все готовы, то ниже ты можешь разыграть Тайного Санту!</div>
 
             <div class="form-group">
                 <label for="session_id">Идентификатор комнаты</label>
