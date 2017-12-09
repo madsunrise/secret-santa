@@ -6,7 +6,7 @@ import {NetworkService} from "./UserService";
     selector: 'secret-santa',
     template: `
         <body>
-
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
