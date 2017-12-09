@@ -116,7 +116,6 @@ def play(session_id):
 
     for i, sender in enumerate(users):
         receiver = users[(i + 1) % len(users)]
-        print (u"From %s to %s with wish: %s" % (sender.user.email, receiver.user.email, receiver.wish))
         sendPlayEmail(sender.user.email, receiver.user.first_name, receiver.wish)
 
     session.alreadyPlayed = 1
@@ -125,11 +124,12 @@ def play(session_id):
 
 
 def sendPlayEmail(fromMe, toHim, wish):
-    text = 'Хей!\n\nМы определили твою судьбу, ' \
-           'адресат твоего подарочка: %s. А вот и его пожелания: \"%s\".\nДа смотри не облажайся!\n\nС уважением, гномики.' % (toHim, wish)
+    text = u'Хей!\n\nМы определили твою судьбу, ' \
+           'адресат твоего подарочка: %s. А вот и его пожелания: \"%s\".\nДа смотри не облажайся!\n\n' \
+           'С уважением, гномики.' % (toHim, wish)
 
     send_mail(
-        'Тайный Санта',
+        u'Тайный Санта',
         text,
         '2017.secret.santa.2018@gmail.com',
         [fromMe],
