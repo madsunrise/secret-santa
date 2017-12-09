@@ -16,7 +16,7 @@ import {NetworkService} from "./UserService";
 
         <mat-progress-bar *ngIf="progressBarEnabled == true" mode="indeterminate"></mat-progress-bar>
 
-        <div style="width: 350px; margin-left: 40px;">
+        <div style="width: 350px; margin-top: 5px; margin-left: 40px;">
             <div class="form-group">
                 <label for="name">Имя</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="name">
@@ -48,7 +48,7 @@ import {NetworkService} from "./UserService";
             </div>
 
 
-            <div style="margin-top: 65px; margin-bottom: 15px;">Если все готовы, то ниже ты можешь разыграть Тайного Санту!</div>
+            <div style="margin-top: 40px; margin-bottom: 15px;">Если все готовы, то ниже ты можешь разыграть Тайного Санту!</div>
 
             <div class="form-group">
                 <label for="session_id">Идентификатор комнаты</label>
@@ -94,8 +94,8 @@ export class AppComponent {
                 this.userService.addUserToSession(roomInt, data.id)
                     .subscribe(
                         data => {
-                            alert("Йоу, жди письмо с подтверждением!");
                             this.progressBarEnabled = false;
+                            alert("Йоу, жди письмо с подтверждением!");
                         }
                     )
             }
@@ -117,8 +117,8 @@ export class AppComponent {
 
         this.userService.playSession(roomInt).subscribe(
             data => {
-                alert("Письма разосланы!");
                 this.progressBarEnabled = false;
+                alert("Письма разосланы!");
             }
         )
     }

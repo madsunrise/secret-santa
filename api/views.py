@@ -19,7 +19,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         data = request.data
 
-        if (User.objects.filter(email=data['email']).exists()):
+        if User.objects.filter(email=data['email']).exists():
             return Response(status=status.HTTP_300_MULTIPLE_CHOICES)
 
         with transaction.atomic():
