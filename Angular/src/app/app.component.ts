@@ -5,12 +5,12 @@ import {NetworkService} from "./UserService";
 @Component({
     selector: 'secret-santa',
     template: `
-        <header>
-            <h1> Тайный Санта 2018</h1>
-        </header>
+        <!--<header>-->
+            <!--<h1> Тайный Санта 2018</h1>-->
+        <!--</header>-->
 
         <body>
-        <div style="margin-left: 10px;">
+        <div style="width: 350px; margin-left: 10px;">
             <div class="form-group">
                 <label for="name">Имя</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="name">
