@@ -43,7 +43,7 @@ import {NetworkService} from "./UserService";
 
             <div class="form-group">
                 <button class="btn btn-default" [disabled]="buttonDisabled" (click)="submit(name, email, wish, room)">
-                    Готово!
+                    Зарегистрироваться
                 </button>
             </div>
 
