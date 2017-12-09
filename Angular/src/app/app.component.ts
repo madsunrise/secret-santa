@@ -4,11 +4,17 @@ import {NetworkService} from "./UserService";
 
 @Component({
     selector: 'secret-santa',
-    template: `        
+    template: `
         <body>
-        
-        <img src="https://onepagelove-wpengine.netdna-ssl.com/wp-content/uploads/gravity_forms/1-e6fef9602ee538adb7069defe12f9dc0/2012/12/Secret-Santa-400-211.jpg"/>
-        
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                   <h1>Тайный Санта 2018</h1>
+                </div>
+            </div>
+        </nav>
+
         <div style="width: 350px; margin-left: 50px;">
             <div class="form-group">
                 <label for="name">Имя</label>
