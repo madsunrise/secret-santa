@@ -29,9 +29,9 @@ body {
     font-family: RobotoRegular;
 }
 
-header {
-    height: 50px;
+.navbar-default {
     background: #1e2a3c;
+    border-color: #000000;
     color: white;
 }
 
