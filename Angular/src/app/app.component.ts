@@ -52,6 +52,7 @@ import {NetworkService} from "./UserService";
             <div class="form-group">
                 <label for="session_id">Идентификатор комнаты</label>
                 <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
+                <small id="emailHelp" class="form-text text-muted">Подумай 10 раз прежде чем нажать кнопку!</small>
             </div>
 
             <div class="form-group">
