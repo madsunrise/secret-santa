@@ -14,7 +14,7 @@ import {NetworkService} from "./UserService";
             </div>
         </nav>
 
-        <mat-progress-bar [hidden]="progressBarDisabled" mode="indeterminate"></mat-progress-bar>
+        <mat-progress-bar [disabled]="progressBarDisabled" mode="indeterminate"></mat-progress-bar>
 
         <div style="width: 350px; margin-top: 15px; margin-left: 40px;">
             <div class="form-group">
