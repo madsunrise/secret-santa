@@ -5,9 +5,9 @@ import {NetworkService} from "./UserService";
 @Component({
     selector: 'secret-santa',
     template: `
-        <!--<header>-->
-            <!--<h1> Тайный Санта 2018</h1>-->
-        <!--</header>-->
+        <header>
+        <h1> Тайный Санта 2018</h1>
+        </header>
 
         <body>
         <div style="width: 350px; margin-left: 10px;">
@@ -20,7 +20,8 @@ import {NetworkService} from "./UserService";
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email"
                        [(ngModel)]="email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. It's a lie.
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. It's a
+                    lie.
                 </small>
             </div>
 
@@ -40,18 +41,20 @@ import {NetworkService} from "./UserService";
                     Готово!
                 </button>
             </div>
-        </div>
 
-        <div style="margin-left: 100px; margin-top: 50px; margin-bottom: 15px;">Разыграть нужную комнату можно ниже</div>
-        <div style="width: 400px; margin-left: 100px;">
-            <div class="form-group">
-                <label for="session_id">Идентификатор комнаты</label>
-                <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
-            </div>
 
-            <div class="form-group">
-                <button class="btn btn-default" [disabled]="playButtonDisabled" (click)="play(session_id)">Понеслась!
-                </button>
+            <div style="margin-top: 50px; margin-bottom: 15px;">Разыграть нужную комнату можно ниже</div>
+            <div style="width: 400px; margin-left: 100px;">
+                <div class="form-group">
+                    <label for="session_id">Идентификатор комнаты</label>
+                    <input type="text" class="form-control" id="session_id" [(ngModel)]="session_id">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-default" [disabled]="playButtonDisabled" (click)="play(session_id)">
+                        Понеслась!
+                    </button>
+                </div>
             </div>
         </div>
         </body>`,
