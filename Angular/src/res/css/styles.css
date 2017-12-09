@@ -32,8 +32,6 @@ body {
 header {
     height: 50px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     background: #1e2a3c;
     color: white;
 }
@@ -65,7 +63,7 @@ h1, h2, h3 {
     font-weight: normal;
 }
 
-main-component {
+secret-santa {
     display: flex;
     flex-direction: column;
     height: 100vh;

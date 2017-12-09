@@ -10,7 +10,7 @@ import {NetworkService} from "./UserService";
         </header>
 
         <body>
-        <div style="width: 400px; margin-left: 100px;">
+        <div style="margin-left: 10px;">
             <div class="form-group">
                 <label for="name">Имя</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="name">
