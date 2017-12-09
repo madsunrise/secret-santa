@@ -8,6 +8,9 @@
 # Java class files
 *.class
 
+Angular/node_modules/
+
+*.pyc
 
 # Generated files
 bin/

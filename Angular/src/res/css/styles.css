@@ -29,13 +29,12 @@ body {
     font-family: RobotoRegular;
 }
 
-header {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar-default {
     background: #1e2a3c;
-    color: white;
+}
+
+.navbar-brand{
+    color: white !important;
 }
 
 header h1 {
@@ -48,8 +47,6 @@ header h1 strong {
 }
 
 header a {
-    display: flex;
-    align-items: center;
     padding: 10px;
     font-size: 15px;
     color: white;
@@ -63,12 +60,6 @@ body {
 
 h1, h2, h3 {
     font-weight: normal;
-}
-
-main-component {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
 }
 
 .wrapper {
