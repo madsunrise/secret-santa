@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/root/secret-santa
+ExecStart=/root/secret-santa/env/bin/gunicorn --workers 3 -b :8081 SecretSantaApi.wsgi:application --access-logfile /var/log/gunicorn/access.log --error-logfile /var/log/gunicorn/error.log
+
+[Install]
+WantedBy=multi-user.target
